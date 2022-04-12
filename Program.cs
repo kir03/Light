@@ -31,3 +31,34 @@ namespace Light // Note: actual namespace depends on the project name.
         }
     }
 }
+
+
+
+
+
+
+
+
+string path = @"C:\Users\User\Desktop\text.txt";
+Console.WriteLine("Вот как выглядит файл:");
+using (StreamReader sr = new StreamReader(path))
+{
+    Console.WriteLine(sr.ReadToEnd());
+}
+Console.WriteLine("Допишите в файле, написав в последней строке слово \"stop\"");
+using (StreamWriter sw = new StreamWriter(path, true))
+{
+    string text = string.Empty;
+    while (text != "stop")
+    {
+        sw.WriteLine(text);
+        text = Console.ReadLine();
+    }
+
+}
+Console.Clear();
+Console.WriteLine("Вот измененный файл:");
+using (StreamReader sr = new StreamReader(path))
+{
+    Console.WriteLine(sr.ReadToEnd());
+}
